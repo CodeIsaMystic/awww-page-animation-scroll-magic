@@ -292,8 +292,33 @@ body {
     }
 
 
+    /* =Fake Height */
+    .fake-height {
+        height: 900%;
+    }
+    #main {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+    }
+    .pin-wrapper {
+        bottom: 0 !important;
+    }
+    .nav-trigger {
+        z-index: 100;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        background-color: green;
+        /*visibility: hidden;*/
+    }
 
-    
+
+
+
 
     
 
