@@ -119,8 +119,6 @@ html, body {
     z-index: 10;
 }
 
-.logo img { width: 250px; }
-
 .logo span {
     display: block;
     margin-top: 5px;
@@ -128,6 +126,8 @@ html, body {
     font-style: italic;
     font-size: 16px;
 }
+
+.logo img { width: 250px; }
 
 /* =Navigation */
 .nav-container { display: none; }
@@ -163,7 +163,7 @@ html, body {
     right: 0;
     margin: 0;
     font-size: 80px;
-    font-family: 'Okomito-Bold';
+    font-family: 'Okomito-Bold', Helvetica, Helvetica Neue, Arial, sans-serif;
     line-height: 80px;
 }
 .title {
@@ -175,8 +175,8 @@ html, body {
     line-height: 40px;
 
 }
-.title strong { font-family: 'Okomito-Bold'; }
-.title em { font-family: 'Okomito-Medium'; font-style: normal; }
+.title strong { font-family: 'Okomito-Bold', Helvetica, Helvetica Neue, Arial, sans-serif; }
+.title em { font-family: 'Okomito-Medium', Helvetica, Helvetica Neue, Arial, sans-serif; font-style: normal; }
 .fade-txt {  display: block; }
 
 
@@ -217,17 +217,27 @@ html, body {
 @media only screen and (min-width: 480px) {
     /*  =Slides Styles  */
     .number { font-size: 120px; line-height: 120px; }
+
     #slide01 .number { font-size: 140px; }
 
     .title, #slide09 .number { font-size: 60px; line-height: 60px; }
     
 }
 
-@media only screen and (min-width: 768px) {
-    
+@media only screen and (min-width: 768px) {  
+     
 }
 
 @media only screen and (min-width: 1025px){
+    /*  =Body  */
+    body {
+        opacity: 0;
+    }
+    .no-js body,
+    .touch body {
+        opacity: 1;
+    }
+
     /* =Logo */
     .logo-container {
         width: 37%;
@@ -236,7 +246,7 @@ html, body {
         top: 40%;
         margin-top: -285px;
     }
-    .logo { right: 7%; left: auto; }
+    .logo { right: 7%; left: auto; visibility: hidden; }
     .logo img { height: 125px; }
 
 
@@ -245,7 +255,7 @@ html, body {
     .nav-container {
         position: absolute;
         top: 40%;
-        margin-top: 270px;
+        margin-top: 160px;
         width: 37%;
         z-index: 11;
         display: block;
@@ -307,7 +317,8 @@ html, body {
         top: 0;
     }
     .pin-wrapper { bottom: 0 !important; }
-    
+
+    /*   TRIGGER FOR NAV   */
     .nav-trigger {
         z-index: 100;
         position: absolute;
@@ -316,14 +327,47 @@ html, body {
         width: 10px;
         height: 10px;
         background-color: green;
-        /*visibility: hidden;*/
+        visibility: hidden;
     }
+    /* POSITIONING SLIDES  */
+    .slide-pos {
+        z-index: 100;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        background-color: yellow;
+        visibility: hidden;
+    }
+    #slide02-pos {top: 140%;}
+    #slide03-pos {top: 240%;}
+    #slide04-pos {top: 340%;}
+    #slide05-pos {top: 440%;}
+    #slide06-pos {top: 540%;}
+    #slide07-pos {top: 640%;}
+    #slide08-pos {top: 740%;}
+    #slide09-pos {top: 840%;}
 
 
+    .slide-pos-reverse {
+        z-index: 100;
+        position: absolute;
+        top: 70%;
+        left: 75%;
+        width: 10px;
+        height: 10px;
+        background-color: black;
+        visibility: hidden;
+    }
+    #slide02-pos-reverse {top: 170%;}
+    #slide03-pos-reverse {top: 270%;}
+    #slide04-pos-reverse {top: 370%;}
+    #slide05-pos-reverse {top: 470%;}
+    #slide06-pos-reverse {top: 570%;}
+    #slide07-pos-reverse {top: 670%;}
+    #slide08-pos-reverse {top: 770%;}
 
-
-
-    
 
     /*  =Slide Layout  */
     .slide {
@@ -351,6 +395,8 @@ html, body {
         left: 0;
         background-color: #fff;
         opacity: 1;
+        transform: scaleX(1);
+        transform-origin: 0 50%;
     }
     .bcg-color, .bcg-white {
         position: absolute;
@@ -379,7 +425,7 @@ html, body {
         right: 5%;
         left: auto;
     }
-    .title, #slide09 .number {
+    .title {
         position: absolute;
         top: 40%;
         left: 5%;
@@ -451,10 +497,15 @@ html, body {
 }
 
 @media only screen and (min-width: 1140px) {
+    /* =Navigation */
+    .nav-container { margin-top: 270px; }
+
     /*  =Slides Styles  */
     .number { font-size: 200px; line-height: 200px; }
-    #slide01 { font-size: 250px; }
-    .title { font-size: 100px; line-height: 100px; }
+
+    #slide01 .number { font-size: 250px; }
+
+    .title, #slide09 .number { font-size: 100px; line-height: 100px; }
     
 }
 
