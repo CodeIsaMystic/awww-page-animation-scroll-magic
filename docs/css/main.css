@@ -98,6 +98,10 @@ body {
   font: 16px/1.5 'Okomito-Regular', Helvetica, Helvetica Neue, Arial, sans-serif; 
 }
 
+html, body {
+  height: 100%;
+}
+
 
 /* ==========================================================================
    Author's custom styles
@@ -302,9 +306,8 @@ body {
         width: 100%;
         top: 0;
     }
-    .pin-wrapper {
-        bottom: 0 !important;
-    }
+    .pin-wrapper { bottom: 0 !important; }
+    
     .nav-trigger {
         z-index: 100;
         position: absolute;
@@ -339,6 +342,7 @@ body {
         overflow: hidden;
     }
     .primary { width: 37%; }
+
     .bcg {
         position: absolute;
         height: 100%;
