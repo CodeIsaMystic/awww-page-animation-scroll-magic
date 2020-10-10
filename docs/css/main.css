@@ -266,7 +266,7 @@ html, body {
         position: absolute;
         top: 40%;
         left: 5%;
-        //margin-top: 100px;
+        margin-top: 100px;
     }
 
     #layers svg { width: 668px; max-width: none; }

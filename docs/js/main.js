@@ -207,19 +207,33 @@ $(document).ready(function () {
 
 
     crossFadeTl.timeScale(0.5);
-    
-    const countUpText = new TimelineMax({paused: true});
-    
-    /* FADE NUMBER IN */
-    countUpText.to($slideInNumber, 1.7, {autoAlpha: 1, ease:Linear.easeNone, onUpdate: updateValue,onUpdateParams: ['{self}', slideInValue, $slideInNumber]});
 
-    const countUpTl = new TimelineMax();
+    /**  COUNT UP OR SCRAMBLE TEXT   **/
+		if(slideInID == 09){
 
-    countUpTl.to(countUpText, 1, {progress: 1, ease:Power3.easeOut});
+			/*  SCRAMBLE TEXT  TIMELINE  */
+			var scrambleTextTl = new TimelineMax();
+			scrambleTextTl.to($slideInNumber, 1.4, {scrambleText: 'Share', autoAlpha: 1, ease:Power1.easeOut});
 
-    crossFadeTl.add(countUpTl, 'countingUp');
+      crossFadeTl.add(scrambleTextTl, 'countingUp');
+      
+    } else {
+      
+      /**  COUNT UP   **/
+      const countUpText = new TimelineMax({paused: true});
+      
+      /* FADE NUMBER IN */
+      countUpText.to($slideInNumber, 1.7, {autoAlpha: 1, ease:Linear.easeNone, onUpdate: updateValue, onUpdateParams: ['{self}', slideInValue, $slideInNumber]});
 
-  
+      /**  COUNT UP TIMELINE  **/
+      const countUpTl = new TimelineMax();
+
+      countUpTl.to(countUpText, 1, {progress: 1, ease:Power3.easeOut});
+
+      crossFadeTl.add(countUpTl, 'countingUp');
+   }
+
+
 
     /**  COLORED BACKGROUND TWEEN UP/DOWN    */
     if(direction == 'FORWARD') {
@@ -296,6 +310,21 @@ $(document).ready(function () {
    *  ANIMATE SLIDE IN
    */
   function animationIn($slideIn) {
+
+    /** SVG LOGO ANIMATION  USING DRAWSVG PLUGIN  **/
+    const introAnimationTl = new TimelineMax(),
+          $layer = $('.layer'),
+          $svgBase = $('#base'),
+          $svgPath = $('#base path'),
+          $awwwLogo = $('.awww-logo');
+
+    introAnimationTl
+      .from($svgPath, 1.2, {drawSVG: '0%', ease:Power2.easeInOut})
+      .from($awwwLogo, 0.3, {autoAlpha: 0}, '-=0.3')
+      .from([$svgBase, $awwwLogo], 1.2, {y: -115, ease:Power4.easeInOut}, "+=0.2")
+      .add('fade')
+      .staggerFrom($layer, 2, {autoAlpha: 0, y: -10, ease:Power4.easeInOut}, 0.2, 'fade-=1.5');
+
     const $slideInNumber = $slideIn.find('.number'),
       $slideInTitle = $slideIn.find('.fade-txt'),
       $primaryBcg = $slideIn.find('.primary .bcg'),
@@ -313,9 +342,10 @@ $(document).ready(function () {
       .to($whiteBcg, 0.6, {scaleX: 0, ease:Power4.easeIn}, 'fadeInLogo+=0.3')
 			.to([$logo, $slideInNumber], 0.2, {autoAlpha: 1, ease:Linear.easeNone}, 'fadeInLogo-=0.2')
 			.staggerFrom($slideInTitle, 0.3, {autoAlpha: 0, x: '-=60', ease:Power1.easeOut }, 0.1, 'fadeInLogo+=0.9')
-			.fromTo($nav, 0.3, {y: -15, autoAlpha: 0}, 
-				                 { autoAlpha: 1, y: 0, ease:Power1.easeOut }, 'fadeInLogo+=1.5');
+      .add(introAnimationTl, 'fadeInLogo+=1')
+      .fromTo($nav, 0.3, {y: -15, autoAlpha: 0}, 
+				                 { autoAlpha: 1, y: 0, ease:Power1.easeOut }, 'fadeInLogo+=3.5');
 
-    transitionInTl.timeScale(3);
+    //transitionInTl.timeScale(3);
   }
 });
