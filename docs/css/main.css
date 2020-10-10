@@ -218,14 +218,24 @@ html, body {
     /*  =Slides Styles  */
     .number { font-size: 120px; line-height: 120px; }
 
-    #slide01 .number { font-size: 140px; }
+    #slide01 .number { font-size: 120px; }
 
     .title, #slide09 .number { font-size: 60px; line-height: 60px; }
+
+
+    /*  =SVG  */
+    #layers { margin-top: -30px; }
+
+    #layers svg { max-width: 90%; }  
+     
     
 }
 
-@media only screen and (min-width: 768px) {  
-     
+@media only screen and (min-width: 768px) {
+    /*  =SVG  */
+    #layers { margin-top: -40px; }
+
+    #layers svg { max-width: 550px; }  
 }
 
 @media only screen and (min-width: 1025px){
@@ -251,6 +261,17 @@ html, body {
 
 
 
+    /*  =SVG  */
+    #layers {
+        position: absolute;
+        top: 40%;
+        left: 5%;
+        //margin-top: 100px;
+    }
+
+    #layers svg { width: 668px; max-width: none; }
+
+
     /* =Navigation */
     .nav-container {
         position: absolute;
@@ -263,7 +284,7 @@ html, body {
     nav {
         position: absolute;
         right: 7%;
-        width: 235px;
+        width: 240px;
         height: 24px;
         display: block;
     }
@@ -285,6 +306,7 @@ html, body {
         left: 6px;
         overflow: hidden;
     }
+
     .nav-items a {
         display: block;
         width: 100%;
@@ -503,7 +525,7 @@ html, body {
     /*  =Slides Styles  */
     .number { font-size: 200px; line-height: 200px; }
 
-    #slide01 .number { font-size: 250px; }
+    #slide01 .number { font-size: 200px; }
 
     .title, #slide09 .number { font-size: 100px; line-height: 100px; }
     
