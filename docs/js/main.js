@@ -213,7 +213,7 @@ $(document).ready(function () {
 
 			/*  SCRAMBLE TEXT  TIMELINE  */
 			var scrambleTextTl = new TimelineMax();
-			scrambleTextTl.to($slideInNumber, 1.4, {scrambleText: 'Share', autoAlpha: 1, ease:Power1.easeOut});
+			scrambleTextTl.to($slideInNumber, {duration:1.4, scrambleText:{text: 'Share'}});
 
       crossFadeTl.add(scrambleTextTl, 'countingUp');
       
@@ -231,40 +231,23 @@ $(document).ready(function () {
       countUpTl.to(countUpText, 1, {progress: 1, ease:Power3.easeOut});
 
       crossFadeTl.add(countUpTl, 'countingUp');
-   }
+    }
 
 
 
     /**  COLORED BACKGROUND TWEEN UP/DOWN    */
     if(direction == 'FORWARD') {
       let tweenBcg = TweenMax
-        .fromTo(
-          $slideInBcg, 0.7, 
+        .fromTo($slideInBcg, 0.7, 
           {autoAlpha: 0}, 
-          {
-            autoAlpha: 1, 
-            ease:Linear.easeNone, 
-            onComplete: hideOldSlide,
-            onCompleteParams: [$slideOut] 
-          }
-        );
+          {autoAlpha: 1, ease:Linear.easeNone, onComplete: hideOldSlide, onCompleteParams: [$slideOut]});
 
         crossFadeTl.add(tweenBcg, 'countingUp-=0.3');
-
     } else {
       let tweenBcg = TweenMax
-        .to(
-          $slideOutBcg, 0.7, 
-          {
-            autoAlpha: 0, 
-            ease:Linear.easeNone, 
-            onComplete: hideOldSlide,
-            onCompleteParams: [$slideOut] 
-          }
-        );
+        .to( $slideOutBcg, 0.7, { autoAlpha: 0, ease:Linear.easeNone, onComplete: hideOldSlide, onCompleteParams: [$slideOut]});
 
         crossFadeTl.add(tweenBcg, 'countingUp-=0.3');
-
     }
   }
 
